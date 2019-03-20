@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2019_03_20_182248) do
     t.datetime "start_date"
     t.integer "duration"
     t.string "spectator_price"
+    t.string "dancer_price"
     t.text "rules"
     t.string "prize_money"
     t.string "picture_url"

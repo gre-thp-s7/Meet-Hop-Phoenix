@@ -6,6 +6,7 @@ class Events < ActiveRecord::Migration[5.2]
       t.datetime :start_date
       t.integer :duration
       t.string :spectator_price
+      t.string :dancer_price
       t.text :rules
       t.string :prize_money
       t.string :picture_url
