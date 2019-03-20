@@ -1,0 +1,29 @@
+<%= form_tag(:controller => "registrations", :action => "create") do %>
+<h1>Paiement de votre place</h1>
+  <article>
+    <% if flash[:error].present? %>
+      <div id="error_explanation">
+        <p><%= flash[:error] %></p>
+      </div>
+    <% end %>
+    <label class="amount">
+
+      <% if @dancer == "true" %>
+        <span>Tu t'es inscrit en tant que danseur</span>  
+      <% else %>    
+        <span>Tu t'es inscrit en tant que spectateur</span>
+      <% end %>
+      <br/>
+      <span>Prix de votre place: <%= @amount/100 %> €</span>
+
+    </label>
+  </article>
+<%= hidden_field_tag :categories , @categories %>
+<%= hidden_field_tag :dancer , @dancer %>
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="Inscription à l'évènement"
+          data-amount="<%= @amount %>"
+          data-currency="EUR"
+          data-locale="fr"></script>
+<% end %>
