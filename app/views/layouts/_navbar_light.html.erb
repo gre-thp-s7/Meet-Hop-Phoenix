@@ -19,15 +19,29 @@
                   Créer un Évènement
                 </a>
             </ul>
+            <ul class="navbar-nav">
+              <% if user_signed_in? %>
+              <li class="active nav-item"><%= link_to "Liste des événements", root_path %></li>
+              <li class="active nav-item"><%= link_to "Créer un nouvel événement", root_path %></li>
+              <li><%= link_to('Se déconnecter', destroy_user_session_path, method: :delete, class: "btn btn-common nav-item") %></li>
+              <li class="nav-item"><%= link_to "Changer mot de passe", edit_user_registration_path %></li>
+              <li class="nav-item"><%= link_to "Profil", user_path(current_user) %></li>
+              <% else %>
+              <li class="active nav-item"><%= link_to "Liste des événements", root_path %></li>
+              <li class="active nav-item"><%= link_to "Créer un nouvel événement", root_path %></li>
+              <li class="nav-item"><%= link_to "Se connecter", new_user_session_path %></li>
+              <li class="nav-item"><%= link_to "S'inscrire", new_user_registration_path %></li>
+              <% end %>
+            </ul>
             <ul class="navbar-nav align-items-center mr-0">
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown-2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   S'incrire / Se connecter
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  
+
                   <div class="dropdown-divider"></div>
-                  
+
                 </div>
               </li>
             </ul>
